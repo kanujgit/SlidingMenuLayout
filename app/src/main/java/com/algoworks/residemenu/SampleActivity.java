@@ -59,6 +59,7 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
         screenIcons = loadScreenIcons();
         screenTitles = loadScreenTitles();
 
+
         DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
                 createItemFor(POS_DASHBOARD).setChecked(true),
                 createItemFor(POS_ACCOUNT),

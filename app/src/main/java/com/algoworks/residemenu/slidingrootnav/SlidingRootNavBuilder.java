@@ -35,7 +35,7 @@ public class SlidingRootNavBuilder {
 
     private static final float DEFAULT_END_SCALE = 0.95f;
     private static final int DEFAULT_END_ELEVATION_DP = 8;
-    private static final int DEFAULT_DRAG_DIST_DP = 340;
+    private static final int DEFAULT_DRAG_DIST_DP = 320;
 
     private Activity activity;
 
