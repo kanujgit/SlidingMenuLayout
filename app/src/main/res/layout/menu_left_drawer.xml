@@ -1,56 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@drawable/grad_slide_menu"
     android:orientation="vertical">
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="90dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="24dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:text="@string/account_balance"
-        android:textSize="12sp" />
+        android:layout_height="@dimen/dp_50" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:layout_marginStart="@dimen/dp_40"
+        android:orientation="horizontal">
 
-        <TextView
+        <android.support.v7.widget.CardView
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_90"
+            app:cardCornerRadius="@dimen/dp_45">
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="@dimen/dp_70"
+                android:layout_gravity="center_horizontal|center_vertical"
+                app:cardCornerRadius="@dimen/dp_35">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/test_user" />
+
+            </android.support.v7.widget.CardView>
+
+        </android.support.v7.widget.CardView>
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="@string/balance_currency" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp_25"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/balance_amount"
-            android:textSize="34sp" />
+            <com.algoworks.residemenu.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Ahmad"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp_20" />
+
+            <com.algoworks.residemenu.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Ibrahim"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp_20" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
+
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="56dp" />
+        android:layout_height="@dimen/dp_40" />
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_240"
+        android:layout_height="@dimen/dp_80"
+        android:layout_marginStart="@dimen/dp_50"
+        android:background="@drawable/shape_slide_menu"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/vector_smart_object" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7"
+                android:text="Rent"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp_13" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="@dimen/dp_1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@color/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/vector_smart_object" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7"
+                android:text="Community"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/sp_13" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content" />
+        android:id="@+id/rec_slide_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_50" />
 
     <Space
         android:layout_width="wrap_content"
         android:layout_height="40dp" />
+
 
 </LinearLayout>

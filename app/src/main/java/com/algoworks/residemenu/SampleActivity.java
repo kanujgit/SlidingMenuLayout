@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
@@ -17,7 +19,6 @@ import com.algoworks.residemenu.fragment.CenteredTextFragment;
 import com.algoworks.residemenu.menu.DrawerAdapter;
 import com.algoworks.residemenu.menu.DrawerItem;
 import com.algoworks.residemenu.menu.SimpleItem;
-import com.algoworks.residemenu.menu.SpaceItem;
 import com.algoworks.residemenu.slidingrootnav.SlidingRootNav;
 import com.algoworks.residemenu.slidingrootnav.SlidingRootNavBuilder;
 
@@ -33,20 +34,33 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
     private static final int POS_ACCOUNT = 1;
     private static final int POS_MESSAGES = 2;
     private static final int POS_CART = 3;
-    private static final int POS_LOGOUT = 5;
+    private static final int POS_1 = 4;
+    private static final int POS_2 = 5;
+    private static final int POS_3 = 6;
+    private static final int POS_4 = 7;
+
 
     private String[] screenTitles;
     private Drawable[] screenIcons;
 
     private SlidingRootNav slidingRootNav;
 
+    CoordinatorLayout layout;
+    AppBarLayout appbar;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        layout = findViewById(R.id.activity_main);
+        appbar = findViewById(R.id.appbar);
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withToolbarMenuToggle(toolbar)
@@ -65,23 +79,31 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
                 createItemFor(POS_ACCOUNT),
                 createItemFor(POS_MESSAGES),
                 createItemFor(POS_CART),
-                new SpaceItem(48),
-                createItemFor(POS_LOGOUT)));
+                createItemFor(POS_ACCOUNT),
+                createItemFor(POS_MESSAGES),
+                createItemFor(POS_CART),
+                createItemFor(POS_CART)));
+
+
         adapter.setListener(this);
 
-        RecyclerView list = findViewById(R.id.list);
-        list.setNestedScrollingEnabled(false);
-        list.setLayoutManager(new LinearLayoutManager(this));
-        list.setAdapter(adapter);
 
-        adapter.setSelected(POS_DASHBOARD);
+        RecyclerView recSlideMenu = findViewById(R.id.rec_slide_menu);
+        Drawable horizontalDivider = ContextCompat.getDrawable(this, R.drawable.shape_slide_line_divider);
+        Drawable verticalDivider = ContextCompat.getDrawable(this, R.drawable.shape_slide_line_divider);
+
+
+        recSlideMenu.setNestedScrollingEnabled(false);
+        recSlideMenu.setLayoutManager(new GridLayoutManager(this, 2));
+        //recSlideMenu.addItemDecoration(new GridDividerItemDecoration(horizontalDivider, verticalDivider, 2));
+        recSlideMenu.setAdapter(adapter);
+
     }
+
 
     @Override
     public void onItemSelected(int position) {
-        if (position == POS_LOGOUT) {
-            finish();
-        }
+
         slidingRootNav.closeMenu();
         Fragment selectedScreen = CenteredTextFragment.createFor(screenTitles[position]);
         showFragment(selectedScreen);
@@ -95,10 +117,10 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
 
     private DrawerItem createItemFor(int position) {
         return new SimpleItem(screenIcons[position], screenTitles[position])
-                .withIconTint(color(R.color.textColorSecondary))
-                .withTextTint(color(R.color.textColorPrimary))
-                .withSelectedIconTint(color(R.color.colorAccent))
-                .withSelectedTextTint(color(R.color.colorAccent));
+                .withIconTint(color(R.color.colorTextView))
+                .withTextTint(color(R.color.colorTextView))
+                .withSelectedIconTint(color(R.color.colorWhite))
+                .withSelectedTextTint(color(R.color.colorWhite));
     }
 
     private String[] loadScreenTitles() {

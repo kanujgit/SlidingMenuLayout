@@ -8,9 +8,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:fontFamily="sans-serif-light"
         android:clickable="true"
-        android:textColor="?android:textColorSecondary"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/colorAccent"
         android:textSize="36sp" />
 
 </FrameLayout>

@@ -25,7 +25,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
         this.items = items;
         this.viewTypes = new HashMap<>();
         this.holderFactories = new SparseArray<>();
-
         processViewTypes();
     }
 

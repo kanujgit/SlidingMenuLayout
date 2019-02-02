@@ -32,11 +32,13 @@ public class DrawerListenerAdapter implements DragListener, DragStateListener {
 
     @Override
     public void onDragEnd(boolean isMenuOpened) {
+
         if (isMenuOpened) {
             adaptee.onDrawerOpened(drawer);
         } else {
             adaptee.onDrawerClosed(drawer);
         }
+
         adaptee.onDrawerStateChanged(DrawerLayout.STATE_IDLE);
     }
 }

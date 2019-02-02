@@ -7,6 +7,7 @@ import android.support.annotation.IntRange;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class SlidingRootNavBuilder {
 
     private static final float DEFAULT_END_SCALE = 0.95f;
     private static final int DEFAULT_END_ELEVATION_DP = 8;
-    private static final int DEFAULT_DRAG_DIST_DP = 320;
+    private static final int DEFAULT_DRAG_DIST_DP = 340;
 
     private Activity activity;
 
@@ -247,11 +248,15 @@ public class SlidingRootNavBuilder {
 
     protected void initToolbarMenuVisibilityToggle(final SlidingRootNavLayout sideNav, View drawer) {
         if (toolbar != null) {
+
             ActionBarToggleAdapter dlAdapter = new ActionBarToggleAdapter(activity);
             dlAdapter.setAdaptee(sideNav);
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(activity, dlAdapter, toolbar,
+            final ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(activity, dlAdapter, toolbar,
                     R.string.srn_drawer_open,
                     R.string.srn_drawer_close);
+
+            toggle.setDrawerIndicatorEnabled(false);
+
             toggle.syncState();
             DrawerListenerAdapter listenerAdapter = new DrawerListenerAdapter(toggle, drawer);
             sideNav.addDragListener(listenerAdapter);
@@ -260,7 +265,9 @@ public class SlidingRootNavBuilder {
     }
 
     private int dpToPx(int dp) {
-        return Math.round(activity.getResources().getDisplayMetrics().density * dp);
+
+        //return Math.round(activity.getResources().getDisplayMetrics().density * dp);
+        return Math.round(dp * (activity.getResources().getDisplayMetrics().xdpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
 }
